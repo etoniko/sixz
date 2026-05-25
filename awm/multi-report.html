@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWM — Мульти-операции</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f0f4e8;
+      color: #111;
+      line-height: 1.5;
+    }
+    .top {
+      background: linear-gradient(160deg, #2e3238, #1e2126);
+      color: #fff;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .logo {
+      font-size: 36px;
+      font-weight: 900;
+      font-style: italic;
+      color: #9eff00;
+      text-shadow: 0 0 16px rgba(158,255,0,.5);
+    }
+    .top h1 { font-size: 18px; margin-top: 10px; }
+    .top a { color: #9eff00; font-size: 13px; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 24px 16px 40px; }
+
+    .card {
+      background: #fff;
+      border: 1px solid #c8e870;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .card-head {
+      background: #2e3238;
+      color: #fff;
+      padding: 12px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .num {
+      background: #9eff00;
+      color: #111;
+      font-weight: 900;
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .card-body { padding: 18px 20px; }
+    .lead {
+      background: #e8ffb8;
+      border-left: 4px solid #9eff00;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+    .sub { margin-bottom: 16px; }
+    .sub h3 {
+      font-size: 13px;
+      color: #33691e;
+      border-bottom: 2px solid #9eff00;
+      display: inline-block;
+      margin-bottom: 8px;
+      padding-bottom: 2px;
+    }
+    .sub p, .sub ul { font-size: 14px; }
+    .sub ul { margin: 6px 0 0 18px; }
+  .tag {
+      display: inline-block;
+      background: #e8ffb8;
+      border: 1px solid #9eff00;
+      color: #33691e;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 3px;
+      margin-right: 4px;
+    }
+    .safe {
+      background: #f9fff0;
+      border: 1px dashed #9eff00;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    .mockups {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .mockups figure { text-align: center; }
+    .mockups img {
+      width: 100%;
+      max-width: 220px;
+      border: 3px solid #9eff00;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.12);
+    }
+    .mockups figcaption {
+      font-size: 12px;
+      font-weight: 700;
+      color: #33691e;
+      margin-top: 8px;
+    }
+    .wide {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .wide img {
+      max-width: 100%;
+      border: 3px solid #9eff00;
+      border-radius: 8px;
+    }
+    .wide figcaption { font-size: 13px; color: #555; margin-top: 8px; }
+
+    .demo-link {
+      display: block;
+      text-align: center;
+      margin-top: 24px;
+      padding: 14px;
+      background: #9eff00;
+      color: #111;
+      font-weight: 800;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+    .demo-link:hover { background: #c6ff1a; }
+
+    .v2-card {
+      background: linear-gradient(160deg, #2e3238 0%, #1a1e24 100%);
+      border: 2px solid #9eff00;
+      border-radius: 12px;
+      margin-top: 24px;
+      overflow: hidden;
+      color: #fff;
+    }
+    .v2-card-head {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(158,255,0,.3);
+    }
+    .v2-card-head h2 {
+      font-size: 18px;
+      color: #9eff00;
+      margin-bottom: 6px;
+    }
+    .v2-card-head p { font-size: 13px; opacity: .9; line-height: 1.5; }
+    .v2-card-body { padding: 16px 20px 20px; }
+    .v2-list { list-style: none; font-size: 13px; margin: 12px 0 16px; }
+    .v2-list li { padding: 6px 0; padding-left: 16px; position: relative; }
+    .v2-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #9eff00;
+      font-weight: 700;
+    }
+    .demo-link--v2 {
+      background: #2e3238;
+      color: #9eff00;
+      border: 2px solid #9eff00;
+    }
+    .demo-link--v2:hover { background: #1a1e24; color: #c6ff1a; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="logo">AWM</div>
+    <h1>Пункт 6 · Мульти-операции с ГЕ</h1>
+    <p style="margin-top:8px;opacity:.85;font-size:13px">Закрытие · Привязка к 0-0-1 · Товар на ГЕ</p>
+    <p style="margin-top:10px"><a href="problemy-awm-report.html">← Полный отчёт</a></p>
+  </header>
+
+  <main class="wrap">
+    <div class="card">
+      <div class="card-head">
+        <span class="num">6</span>
+        <h2>Мульти-операции — один модуль, три сценария</h2>
+      </div>
+      <div class="card-body">
+        <p class="lead">
+          <strong>Общая идея:</strong> кладовщик повторяет одно действие десятки раз (закрыть ГЕ, привязать к месту, привязать товар).
+          Вместо 50–70 сканов — режим <strong>«Мульти»</strong>: поля <em>От ГЕ / До ГЕ</em>, превью списка, галочка «Цифры проверены», одна зелёная кнопка.
+          Сервер отсеивает непустые ГЕ и несовпадающий SKU.
+        </p>
+
+        <section class="sub">
+          <h3>6A · Закрытие лишних пустых ГЕ</h3>
+          <p><strong>Проблема:</strong> принял 30 паллет, осталось ~50 лишних пустых ГЕ — закрывает каждую вручную.</p>
+          <ul>
+            <li><span class="tag">Диапазон</span> №37431 … №37480 → закрыть только <strong>пустые</strong> (с товаром — пропуск + предупреждение)</li>
+            <li><span class="tag">Список</span> Вкладка с чекбоксами «Непринятые пустые» + «Закрыть выбранные»</li>
+          </ul>
+        </section>
+
+        <section class="sub">
+          <h3>6B · Привязка ГЕ к месту 0-0-1 (Разгрузка)</h3>
+          <p><strong>Проблема:</strong> перед приёмкой ~70 ГЕ привязываются к 0-0-1 по одной через задание «Разгрузка».</p>
+          <ul>
+            <li><span class="tag">Диапазон</span> №37400 … №37470 → массовая привязка к <strong>0-0-1</strong></li>
+            <li><span class="tag">Превью</span> Список 71 ГЕ перед кнопкой «ПРИВЯЗАТЬ»</li>
+            <li><span class="tag">Импорт</span> Подтянуть номера из задания разгрузки с сервера</li>
+          </ul>
+        </section>
+
+        <section class="sub">
+          <h3>6C · Привязка товара к множеству ГЕ (Приёмка)</h3>
+          <p><strong>Проблема:</strong> 70 ГЕ, 700 стульев, 10 шт/ГЕ → ~70 привязок × 15–20 с ≈ <strong>23 минуты</strong>.</p>
+          <ul>
+            <li><span class="tag">Мульти</span> Товар + 10 шт/ГЕ + диапазон №37400…№37469 → одна операция</li>
+            <li><span class="tag">Шаблон</span> Сохранить «стул PLAYOKAY · 10 шт» для следующих поставок</li>
+            <li><span class="tag">Экономия</span> Пакетом 70 ГЕ: <strong>−15…18 мин</strong> на партию</li>
+          </ul>
+          <div class="safe">
+            <strong>Безопасность (все мульти-режимы):</strong> галочка «Цифры проверены» · опционально второй скан / пароль старшего · сервер: только пустые ГЕ и один SKU.
+          </div>
+        </section>
+
+        <h3 style="margin-top:24px;color:#33691e;font-size:14px">Как это может выглядеть на ТСД</h3>
+        <div class="mockups">
+          <figure>
+            <img src="./photo/multi-close.png" alt="6A">
+            <figcaption>6A · Закрыть 50 пустых ГЕ</figcaption>
+          </figure>
+          <figure>
+            <img src="./photo/multi-bind-place.png" alt="6B">
+            <figcaption>6B · Привязать 71 ГЕ к 0-0-1</figcaption>
+          </figure>
+          <figure>
+            <img src="./photo/multi-bind-product.png" alt="6C">
+            <figcaption>6C · 700 стульев на 70 ГЕ</figcaption>
+          </figure>
+        </div>
+        <figure class="wide">
+          <img src="./photo/multi-all.png" alt="Все три экрана">
+          <figcaption>Общий вид трёх мульти-режимов</figcaption>
+        </figure>
+
+        <a class="demo-link" href="multi-mockup.html">Открыть макеты экранов (multi-mockup.html)</a>
+
+        <section class="v2-card">
+          <div class="v2-card-head">
+            <h2>💡 Своя идея: AWM 2.0</h2>
+            <p>Не патч старого приложения, а пересборка UX под реальную работу кладовщика — всё из отчёта (п.1–6) собрано в один современный терминал.</p>
+          </div>
+          <div class="v2-card-body">
+            <ul class="v2-list">
+              <li><strong>Мульти-центр</strong> — 6A / 6B / 6C в одном экране с вкладками</li>
+              <li><strong>Дашборд</strong> — принято / лишние ГЕ / экономия времени на виду</li>
+              <li><strong>Журнал 2.0</strong> — только активные, избранное, debounce 350 мс</li>
+              <li><strong>Приёмка</strong> — кнопка «ГЕ ПРИНЯТА» серая → зелёная + прогресс</li>
+              <li><strong>Поиск ГЕ</strong> — overlay + FAB «Задания», сессия не сбрасывается</li>
+              <li><strong>Скан без Gboard</strong> — скрытое поле, inputmode=none</li>
+              <li><strong>Светлый UI</strong> — белый фон, лайм-акценты, Material Icons</li>
+            </ul>
+            <a class="demo-link demo-link--v2" href="../awm2.html">🚀 Открыть интерактивный макет AWM 2.0</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

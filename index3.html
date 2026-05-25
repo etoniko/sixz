@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AWM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="phone-wrap">
+    <div class="phone" id="phone">
+      <!-- LOGIN -->
+      <section class="screen active" id="screen-login">
+        <header class="hdr hdr-dark">
+          <span class="logo">AWM</span>
+          <button type="button" class="btn-icon" id="btn-logout-login" title="Выход">
+            <svg width="26" height="26" viewBox="0 0 24 24"><path fill="currentColor" d="M16 3h2v14h-2V3zM8 7l-1.4-1.4L10.2 12 6.6 15.4 8 17l6-6-6-6z"/></svg>
+          </button>
+        </header>
+        <div class="body-dark flex-grow">
+          <p class="txt-white mb-4">Склад</p>
+          <p class="txt-white warehouse">2 Цифровой ритейл.Пушкино 2 (27)</p>
+          <label class="scan-area" id="badge-area">
+            <span class="scan-hint">Отсканируйте бейдж для начала работы</span>
+            <input type="text" class="scan-inp" id="badge-inp" autocomplete="off" placeholder="">
+          </label>
+          <button type="button" class="btn-enter" id="btn-enter">ВОЙТИ</button>
+        </div>
+        <footer class="foot-dark">
+          <button type="button" class="foot-btn" data-toast="Связь: OK"><svg viewBox="0 0 24 24" width="30" height="30"><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm-1-9h2v4h-2v-4zm0 6h2v2h-2v-2z"/></svg></button>
+          <button type="button" class="foot-btn foot-btn--on" id="btn-scanner"><svg viewBox="0 0 24 24" width="34" height="34"><path fill="currentColor" d="M3 5h2V3H1v4h2V5zm18-2h-2v2h2V3h2V1h-2v2zM3 19H1v2h4v-2H3v-2zm16 2h2v-2h-2v2h-2v2h2v-2zM7 11H5v2h4v-2H7zm10 0h-4v2h4v-2zm-6 4H9v2h4v-2h-2zm0-8H9v2h4V7h-2z"/></svg></button>
+          <button type="button" class="foot-btn" data-toast="Настройки"><svg viewBox="0 0 24 24" width="30" height="30"><path fill="currentColor" d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm8.9 4.1l1.9-1.5c.2-.2.2-.5 0-.7l-1.8-3.1c-.1-.2-.4-.3-.6-.2l-2.2.9c-.5-.4-1-.7-1.6-1l-.3-2.4c0-.2-.2-.4-.5-.4h-3.6c-.2 0-.4.2-.5.4l-.4 2.4c-.6.3-1.1.6-1.6 1l-2.2-.9c-.2-.1-.5 0-.6.2l-1.8 3.1c-.1.2-.1.5.1.7l1.9 1.5c0 .3-.1.6-.1.9s0 .6.1.9l-1.9 1.5c-.2.2-.2.5-.1.7l1.8 3.1c.1.2.4.3.6.2l2.2-.9c.5.4 1 .7 1.6 1l.3 2.4c.1.2.3.4.5.4h3.6c.3 0 .5-.2.5-.4l.4-2.4c.5-.3 1.1-.6 1.6-1l2.2.9c.2.1.5 0 .6-.2l1.8-3.1c.1-.2.1-.5-.1-.7l-1.9-1.5c.1-.3.1-.6.1-.9s0-.6-.1-.9z"/></svg></button>
+        </footer>
+      </section>
+
+      <!-- WELCOME -->
+      <section class="screen" id="screen-welcome">
+        <div class="body-dark flex-grow center-all">
+          <div class="welcome-frame">
+            <p id="welcome-msg">Добрый день, Daraseliya. N</p>
+          </div>
+          <button type="button" class="btn-enter" id="btn-welcome-ok">ПРОДОЛЖИТЬ</button>
+        </div>
+      </section>
+
+      <!-- MENU -->
+      <section class="screen" id="screen-menu">
+        <header class="hdr hdr-dark">
+          <span class="logo">AWM</span>
+          <button type="button" class="btn-icon" id="btn-logout-menu">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M10 3H4v18h6v-2H6V5h4V3zm11 7-6 6 1.4 1.4L20 12.8V19h2V9h-2V9.2L13.4 6 12 7.4z"/></svg>
+          </button>
+          <div class="hdr-right">
+            <span class="zone">21</span>
+            <svg class="ico-fork" viewBox="0 0 24 24" width="28" height="28"><path fill="#aaa" d="M4 18h2v-4h2v-6H6V6h2V4H4v14zm8-8h2V6h-2v4zm4 0h2V6h-2v4zm-4 4h2v4h-2v-4zm4 0h2v4h-2v-4z"/></svg>
+            <span class="circle-ico circle-ico--fill">!</span>
+            <span class="circle-ico">⏱</span>
+          </div>
+        </header>
+        <div class="body-white flex-grow scroll-y">
+          <div class="menu-row" data-screen="journal">
+            <svg class="menu-ico" viewBox="0 0 24 24" width="32" height="32"><path fill="#555" d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+            <div><b>Журнал заданий</b><small>Модуль заданий WMS</small></div>
+          </div>
+          <div class="menu-row" data-screen="labels">
+            <svg class="menu-ico" viewBox="0 0 24 24" width="32" height="32"><path fill="#555" d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+            <div><b>Этикетки</b><small>Печать этикеток</small></div>
+          </div>
+          <div class="menu-row" data-screen="priemka">
+            <svg class="menu-ico" viewBox="0 0 24 24" width="32" height="32"><path fill="#555" d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/></svg>
+            <div><b>Приёмка</b><small>Приём товара на склад</small></div>
+          </div>
+          <div class="menu-row" data-screen="move">
+            <svg class="menu-ico" viewBox="0 0 24 24" width="32" height="32"><path fill="#555" d="M16 6l2.3-2.3-1.4-1.4L14 5.2 11.7 2.9 10.3 4.3 12.6 6.6 10 9.2 7.7 7 6.3 8.4 8.6 10.7 6 13.3l-2.3-2.3-1.4 1.4L5.2 14l-2.3 2.3 1.4 1.4L5.2 16l2.3 2.3 1.4-1.4L7 15.4l2.6-2.6 2.3 2.3 1.4-1.4-2.3-2.3L14 9.2l2.6 2.6 1.4-1.4L15.7 7 18 4.7 19.4 3.3 17.1 6l2.6 2.6z"/></svg>
+            <div><b>Перемещение</b><small>Переместить / пополнить с МО на МО</small></div>
+          </div>
+          <div class="menu-btns">
+            <button type="button" class="btn-red-outline" id="btn-screensaver">ЗАСТАВКА</button>
+            <button type="button" class="btn-blue-outline" id="btn-wifi">WiFi</button>
+            <button type="button" class="btn-red-outline" id="btn-scanner-menu">СКАНЕР</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRIEMKA -->
+      <section class="screen" id="screen-priemka">
+        <header class="hdr hdr-dark">
+          <span class="logo">AWM</span>
+          <div class="hdr-right">
+            <span class="zone">21</span>
+            <svg class="ico-fork" viewBox="0 0 24 24" width="28" height="28"><path fill="#aaa" d="M4 18h2v-4h2v-6H6V6h2V4H4v14zm8-8h2V6h-2v4zm4 0h2V6h-2v4zm-4 4h2v4h-2v-4zm4 0h2v4h-2v-4z"/></svg>
+            <span class="circle-ico circle-ico--fill">!</span>
+            <span class="circle-ico">⏱</span>
+          </div>
+        </header>
+        <div class="bar-green">Приёмка</div>
+        <div class="body-white flex-grow pad-work">
+          <label class="field-box">
+            <input type="text" class="field-inp" id="priemka-inp" placeholder="Отсканируйте ШК ГЕ" autocomplete="off">
+          </label>
+          <button type="button" class="btn-green-border" id="btn-euro">Евро поддон</button>
+          <button type="button" class="btn-green-border" id="btn-company">Компания</button>
+        </div>
+        <button type="button" class="btn-back" data-screen="menu">← Назад</button>
+      </section>
+
+      <!-- MOVE -->
+      <section class="screen" id="screen-move">
+        <header class="hdr hdr-dark">
+          <span class="logo">AWM</span>
+          <div class="hdr-right">
+            <span class="zone">21</span>
+            <svg class="ico-fork" viewBox="0 0 24 24" width="28" height="28"><path fill="#aaa" d="M4 18h2v-4h2v-6H6V6h2V4H4v14zm8-8h2V6h-2v4zm4 0h2V6h-2v4zm-4 4h2v4h-2v-4zm4 0h2v4h-2v-4z"/></svg>
+            <span class="circle-ico">⏱</span>
+          </div>
+        </header>
+        <div class="bar-green" id="move-title">Переместить/пополнить с МО на МО</div>
+        <div class="body-white flex-grow pad-work scroll-y" id="move-body"></div>
+        <button type="button" class="btn-back" data-screen="menu">← Назад</button>
+      </section>
+
+      <!-- JOURNAL -->
+      <section class="screen" id="screen-journal">
+        <header class="hdr hdr-dark"><span class="logo">AWM</span><div class="hdr-right"><span class="zone">21</span></div></header>
+        <div class="bar-green">Журнал заданий</div>
+        <div class="body-white flex-grow pad-work">
+          <div class="task-item"><span>Приёмка ГЕ</span><span class="tag tag--on">В работе</span></div>
+          <div class="task-item"><span>Перемещение 07-44</span><span class="tag">Ожидает</span></div>
+        </div>
+        <button type="button" class="btn-back" data-screen="menu">← Назад</button>
+      </section>
+
+      <!-- LABELS -->
+      <section class="screen" id="screen-labels">
+        <header class="hdr hdr-dark"><span class="logo">AWM</span><div class="hdr-right"><span class="zone">21</span></div></header>
+        <div class="bar-green">Этикетки</div>
+        <div class="body-white flex-grow pad-work">
+          <label class="field-box">
+            <input type="text" class="field-inp" id="labels-inp" placeholder="Отсканируйте ШК для печати" autocomplete="off">
+          </label>
+          <button type="button" class="btn-green-border" id="btn-print">Печать этикетки</button>
+        </div>
+        <button type="button" class="btn-back" data-screen="menu">← Назад</button>
+      </section>
+
+      <div class="toast" id="toast"></div>
+      <div class="overlay" id="overlay">
+        <span class="logo logo-big">AWM</span>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

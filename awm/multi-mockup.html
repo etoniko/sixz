@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>AWM Multi Mockups</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #e8e8e8;
+      padding: 24px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .wrap { text-align: center; }
+    .wrap h2 {
+      font-size: 11px;
+      color: #333;
+      margin-bottom: 8px;
+      font-weight: 800;
+      max-width: 200px;
+    }
+    .phone {
+      width: 200px;
+      height: 380px;
+      background: #fff;
+      border: 3px solid #222;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    }
+    .hdr {
+      background: #2e3238;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 18px;
+      font-weight: 900;
+      font-style: italic;
+      color: #9eff00;
+    }
+    .zone { color: #9eff00; font-weight: 800; font-size: 12px; }
+    .bar {
+      background: #c8f070;
+      text-align: center;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 6px 4px;
+      color: #111;
+    }
+    .body {
+      flex: 1;
+      padding: 8px;
+      font-size: 8px;
+      overflow: hidden;
+    }
+    .stat {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .stat div {
+      flex: 1;
+      background: #e8ffb8;
+      border: 1px solid #9eff00;
+      border-radius: 4px;
+      padding: 5px;
+      text-align: center;
+    }
+    .stat b { display: block; font-size: 11px; color: #33691e; }
+    .field {
+      border: 2px solid #555;
+      border-radius: 6px;
+      padding: 6px;
+      margin-bottom: 6px;
+      text-align: center;
+      color: #888;
+      font-size: 8px;
+      background: #fafafa;
+    }
+    .field small { display: block; color: #111; font-weight: 700; margin-top: 2px; }
+    .row2 { display: flex; gap: 4px; margin-bottom: 6px; }
+    .row2 .field { flex: 1; margin: 0; }
+    .list {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      max-height: 100px;
+      overflow: hidden;
+      margin-bottom: 6px;
+      font-size: 7px;
+    }
+    .list div {
+      padding: 4px 6px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .list div:nth-child(odd) { background: #f9fff0; }
+    .cb {
+      width: 10px;
+      height: 10px;
+      border: 2px solid #9eff00;
+      background: #9eff00;
+      flex-shrink: 0;
+    }
+    .cb--off { background: #fff; }
+    .prod {
+      background: #e8ffb8;
+      border: 1px solid #b8e060;
+      padding: 6px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      font-size: 7px;
+    }
+    .prod b { font-size: 8px; display: block; }
+    .chk {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 6px;
+      font-size: 7px;
+    }
+    .btn {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 8px;
+      margin-top: auto;
+    }
+    .btn-green { background: #9eff00; color: #111; box-shadow: 0 2px 0 #7acc00; }
+    .btn-gray { background: #bbb; color: #333; }
+    .preview {
+      font-size: 7px;
+      color: #33691e;
+      text-align: center;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+    .tabs {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 6px;
+    }
+    .tabs span {
+      flex: 1;
+      text-align: center;
+      padding: 4px;
+      font-size: 7px;
+      font-weight: 700;
+      border-radius: 4px;
+      background: #eee;
+      color: #555;
+    }
+    .tabs span.on { background: #9eff00; color: #111; }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="m1">
+    <h2>6A · Мульти-закрытие пустых ГЕ</h2>
+    <div class="phone">
+      <div class="hdr"><span class="logo">AWM</span><span class="zone">21</span></div>
+      <div class="bar">Приёмка · Закрыть пустые ГЕ</div>
+      <div class="body" style="display:flex;flex-direction:column;">
+        <div class="stat">
+          <div><span style="font-size:7px">Принято</span><b>30</b></div>
+          <div><span style="font-size:7px">Пустых лишних</span><b style="color:#c00">50</b></div>
+        </div>
+        <div class="tabs">
+          <span class="on">Диапазон</span>
+          <span>Список</span>
+        </div>
+        <div class="row2">
+          <div class="field">От ГЕ<small>№ 37431</small></div>
+          <div class="field">До ГЕ<small>№ 37480</small></div>
+        </div>
+        <div class="preview">Будет закрыто: 50 пустых ГЕ</div>
+        <div class="list">
+          <div><span class="cb"></span> №37431 — пустая</div>
+          <div><span class="cb"></span> №37432 — пустая</div>
+          <div><span class="cb cb--off"></span> №37433 — с товаром ✗</div>
+          <div style="color:#888">… ещё 47 ГЕ</div>
+        </div>
+        <button class="btn btn-green">ЗАКРЫТЬ 50 ГЕ</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" id="m2">
+    <h2>6B · Мульти-привязка к 0-0-1 (Разгрузка)</h2>
+    <div class="phone">
+      <div class="hdr"><span class="logo">AWM</span><span class="zone">21</span></div>
+      <div class="bar">Разгрузка · Мульти-привязка</div>
+      <div class="body" style="display:flex;flex-direction:column;">
+        <div class="field">Место приёмки<small>0-0-1</small></div>
+        <div class="row2">
+          <div class="field">От ГЕ<small>№ 37400</small></div>
+          <div class="field">До ГЕ<small>№ 37470</small></div>
+        </div>
+        <div class="preview">Привязать: 71 ГЕ → 0-0-1</div>
+        <div class="list" style="max-height:120px">
+          <div>✓ №37400</div>
+          <div>✓ №37401</div>
+          <div>✓ №37402</div>
+          <div style="color:#888">… №37403 … №37469</div>
+          <div>✓ №37470</div>
+        </div>
+        <div class="chk"><span class="cb"></span> Цифры и порядок проверены</div>
+        <button class="btn btn-green">ПРИВЯЗАТЬ 71 ГЕ</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" id="m3">
+    <h2>6C · Мульти-привязка товара к ГЕ</h2>
+    <div class="phone">
+      <div class="hdr"><span class="logo">AWM</span><span class="zone">21</span></div>
+      <div class="bar">Приёмка · Один товар — много ГЕ</div>
+      <div class="body" style="display:flex;flex-direction:column;">
+        <div class="prod">
+          <b>Игровой стул PLAYOKAY</b>
+          SKU: CH25092507 · 10 шт / ГЕ
+        </div>
+        <div class="row2">
+          <div class="field">От ГЕ<small>№ 37400</small></div>
+          <div class="field">До ГЕ<small>№ 37469</small></div>
+        </div>
+        <div class="stat">
+          <div><span style="font-size:7px">ГЕ</span><b>70</b></div>
+          <div><span style="font-size:7px">Всего шт</span><b>700</b></div>
+        </div>
+        <div class="preview">Экономия ~20 мин vs по 1 ГЕ</div>
+        <div class="chk"><span class="cb"></span> Цифры проверены</div>
+        <button class="btn btn-green">ПРИВЯЗАТЬ К 70 ГЕ</button>
+        <button class="btn btn-gray" style="margin-top:4px">Сохранить шаблон</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

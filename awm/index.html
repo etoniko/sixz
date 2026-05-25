@@ -1,0 +1,467 @@
+<html lang="ru"><head>
+  <meta charset="UTF-8">
+  <title>AWM — Проблемные пункты и решения</title>
+  <style>
+    @page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.45;
+      color: #1a1a1a;
+      background: #f4f6f0;
+    }
+    .doc {
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,.12);
+    }
+    @media print {
+      body { background: #fff; }
+      .doc { box-shadow: none; max-width: none; }
+      .no-print { display: none !important; }
+      .page-break { page-break-before: always; }
+    }
+
+    /* Cover */
+    .cover {
+      background: linear-gradient(160deg, #2e3238 0%, #3a3f48 55%, #1e2126 100%);
+      color: #fff;
+      padding: 36px 32px 40px;
+      min-height: 260px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      top: -20px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(158,255,0,.35) 0%, transparent 70%);
+    }
+    .cover-logo {
+      font-size: 42pt;
+      font-weight: 900;
+      font-style: italic;
+      color: #9eff00;
+      text-shadow: 0 0 20px rgba(158,255,0,.5);
+      margin-bottom: 8px;
+    }
+    .cover h1 {
+      font-size: 16pt;
+      font-weight: 700;
+      margin-bottom: 6px;
+      max-width: 90%;
+    }
+    .cover .meta {
+      font-size: 9.5pt;
+      color: #c8d0c0;
+      margin-top: 20px;
+    }
+    .cover .meta span { color: #9eff00; font-weight: 700; }
+
+    /* Content */
+    .content { padding: 24px 28px 32px; }
+
+    .toc {
+      background: #e8ffb8;
+      border-left: 5px solid #9eff00;
+      padding: 14px 18px;
+      margin-bottom: 28px;
+    }
+    .toc h2 { font-size: 11pt; color: #2e3238; margin-bottom: 8px; }
+    .toc ol { margin-left: 18px; font-size: 10pt; }
+    .toc li { margin: 3px 0; }
+
+    .issue {
+      margin-bottom: 28px;
+      border: 1px solid #d0e8a0;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .issue-head {
+      background: #2e3238;
+      color: #fff;
+      padding: 10px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .issue-num {
+      background: #9eff00;
+      color: #1a1a1a;
+      font-weight: 900;
+      font-size: 12pt;
+      min-width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .issue-head h3 { font-size: 11.5pt; font-weight: 700; line-height: 1.3; }
+
+    .issue-body { padding: 16px 18px; }
+
+    .block { margin-bottom: 14px; }
+    .block-title {
+      font-size: 9pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: #5a7a20;
+      margin-bottom: 6px;
+      padding-bottom: 3px;
+      border-bottom: 2px solid #9eff00;
+      display: inline-block;
+    }
+    .block p, .block ul { font-size: 10pt; }
+    .block ul { margin: 6px 0 0 18px; }
+    .block li { margin: 4px 0; }
+
+    .tag {
+      display: inline-block;
+      font-size: 8pt;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+    .tag--bug { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
+    .tag--fix { background: #e8ffb8; color: #33691e; border: 1px solid #9eff00; }
+    .tag--idea { background: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; }
+
+    .variants {
+      background: #f9fff0;
+      border: 1px dashed #9eff00;
+      border-radius: 4px;
+      padding: 10px 12px;
+      margin-top: 8px;
+    }
+    .variants strong { font-size: 9pt; color: #33691e; }
+
+.img-placeholder {
+    margin-top: 12px;
+    height: 360px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #6a8a30;
+    font-size: 9pt;
+    text-align: center;
+    padding: 16px;
+	    width: 640px;
+    margin-left: 4%;
+}
+    .img-placeholder .ico { font-size: 22pt; margin-bottom: 6px; opacity: .6; }
+
+    .mockup-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 14px;
+    }
+    .mockup-item {
+      flex: 1 1 28%;
+      min-width: 140px;
+      max-width: 200px;
+      text-align: center;
+    }
+    .mockup-item img {
+      width: 100%;
+      border: 2px solid #9eff00;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    }
+    .mockup-item figcaption {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #33691e;
+      margin-top: 6px;
+      line-height: 1.3;
+    }
+    .mockup-wide {
+      margin-top: 14px;
+      text-align: center;
+    }
+    .mockup-wide img {
+      max-width: 100%;
+      border: 2px solid #9eff00;
+      border-radius: 6px;
+    }
+    .mockup-wide figcaption {
+      font-size: 8.5pt;
+      color: #555;
+      margin-top: 6px;
+    }
+    .flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+      font-size: 9pt;
+      font-weight: 700;
+    }
+    .flow span {
+      background: #2e3238;
+      color: #9eff00;
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+    .flow .arrow { background: none; color: #5a7a20; font-size: 14pt; }
+    .sub-block {
+      border-left: 4px solid #9eff00;
+      padding-left: 12px;
+      margin: 16px 0;
+    }
+    .sub-block h4 {
+      font-size: 10.5pt;
+      color: #2e3238;
+      margin-bottom: 8px;
+    }
+
+    .footer-doc {
+      margin-top: 24px;
+      padding-top: 12px;
+      border-top: 3px solid #9eff00;
+      font-size: 8.5pt;
+      color: #666;
+      text-align: center;
+    }
+
+    .print-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #9eff00;
+      color: #1a1a1a;
+      border: none;
+      padding: 12px 20px;
+      font-weight: 800;
+      font-size: 11pt;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,.25);
+      z-index: 100;
+    }
+    .print-btn:hover { background: #c6ff1a; }
+  </style>
+</head>
+<body>
+  <button class="print-btn no-print" onclick="window.print()">Сохранить как PDF (Печать)</button>
+
+  <div class="doc">
+    <header class="cover">
+      <div class="cover-logo">AWM</div>
+      <h1>Проблемные пункты, решения и предложения</h1>
+      <p style="font-size:10.5pt;opacity:.9;max-width:95%">Документ для проекта WMS / терминал кладовщика</p>
+      <p class="meta">Дата: <span>25.05.2026</span> &nbsp;|&nbsp; Версия: <span>1.0</span> &nbsp;|&nbsp; Формат: отчёт</p>
+    </header>
+
+    <div class="content">
+      <nav class="toc">
+        <h2>Содержание</h2>
+        <ol>
+          <li>Журнал заданий — ложные нажатия при скролле</li>
+          <li>Остаток товара — исчезает журнал заданий</li>
+          <li>Перемещение МХ → МО — сброс активного адреса</li>
+          <li>Клавиатура Google при сканировании</li>
+          <li>Приёмка — нет визуального статуса принятой ГЕ</li>
+          <li><strong>Мульти-операции</strong> (закрытие · привязка к 0-0-1 · товар на ГЕ)</li>
+        </ol>
+      </nav>
+
+      <!-- 1 -->
+      <article class="issue" id="p1">
+        <div class="issue-head">
+          <span class="issue-num">1</span>
+          <h3>Журнал заданий: автонажатие неактивных заданий при скролле</h3>
+        </div>
+        <div class="issue-body">
+          <div class="block">
+            <div class="block-title">Проблема</div>
+            <p>При прокрутке журнала заданий система автоматически «нажимает» неактивные задания. Нет задержки между жестом скролла и действием выбора. Кладовщик видит задания, которые ещё не объявлены  — это создаёт путаницу и лишние переходы.</p>
+          </div>
+          <div class="block">
+            <div class="block-title">Предлагаемые решения</div>
+            <ul>
+              <li><span class="tag tag--fix">Тайминг</span> Ввести debounce / delay <strong>100–500 мс</strong> между окончанием скролла (или touch-end) и обработкой tap/click. Пока идёт scroll — блокировать <code>click</code> / <code>pointerup</code> на элементах списка.</li>
+              <li><span class="tag tag--fix">Фильтр</span> В журнале показывать только <strong>активные</strong> задания, объявленные кладовщику. Остальные — не рендерить (аналог <code>display: none</code> / условный рендер на сервере).</li>
+              <li><span class="tag tag--idea">Избранное</span> Часто используемые задания — в <strong>localStorage</strong> (офлайн-приоритет) и/или в <strong>ЛК / БД</strong> профиля кладовщика; сортировать список: избранные → активные → остальные.</li>
+            </ul>
+            <div class="variants">
+              <strong>Варианты реализации тайминга:</strong>
+              <ul>
+                <li><strong>A:</strong> 300 мс после <code>scrollend</code> / touchend без движения.</li>
+                <li><strong>B:</strong> Разделить зоны: скролл только по контейнеру, выбор — по отдельной кнопке «Открыть».</li>
+                <li><strong>C:</strong> Long-press 400 мс для входа в задание (скролл не триггерит).</li>
+              </ul>
+            </div>
+          </div>
+<div class="img-placeholder" style="background: url(./photo/mission-1.gif);background-size: cover;">
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="issue page-break" id="p2">
+        <div class="issue-head">
+          <span class="issue-num">2</span>
+          <h3>Поиск ГЕ: исчезает журнал заданий (в отличие от «Остаток товара»)</h3>
+        </div>
+        <div class="issue-body">
+          <div class="block">
+            <div class="block-title">Проблема</div>
+            <p>Модуль <strong>«Остаток товара»</strong> при поиске работает стабильно — UI не вылетает, данные не пропадают. При поиске <strong>информации по ГЕ</strong> пропадают журнал заданий и выбор нескольких активных заданий. Кладовщику приходится выходить из учётной записи и входить заново.</p>
+          </div>
+          <div class="block">
+            <div class="block-title">Предлагаемые решения</div>
+            <ul>
+              <li><span class="tag tag--fix">Паттерн</span> Унифицировать навигацию с модулем «Остаток товара»: не размонтировать корневой shell с журналом заданий; открывать поиск ГЕ как <strong>overlay / drawer</strong> или дочерний экран с сохранением state.</li>
+              <li><span class="tag tag--fix">Кнопка</span> Добавить в AWM постоянную кнопку <strong>«Журнал заданий»</strong> в шапке (как быстрый возврат) — видна на экранах поиска ГЕ.</li>
+              <li><span class="tag tag--idea">Сессия</span> Кэшировать выбранное задание в sessionStorage до явного выхода.</li>
+            </ul>
+            <div class="variants">
+              <strong>Варианты:</strong>
+              <ul>
+                <li><strong>A:</strong> Split-view: журнал слева (свёрнут), контент справа.</li>
+                <li><strong>B:</strong> Floating FAB «Задания» поверх экрана ГЕ.</li>
+                <li><strong>C:</strong> Back stack без destroy предыдущего Activity/Fragment.</li>
+              </ul>
+            </div>
+          </div>
+<div class="img-placeholder" style="background: url(./photo/geTovar.gif);background-size: cover;">
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="issue" id="p3">
+        <div class="issue-head">
+          <span class="issue-num">3</span>
+          <h3>Перемещение МХ → МО: «вылетает» активный адрес</h3>
+        </div>
+        <div class="issue-body">
+          <div class="block">
+            <div class="block-title">Проблема</div>
+            <p>Перемещение <strong>МО → МО</strong> работает без сбоев. При <strong>МХ → МО</strong> сбрасывается активный адрес — нужно снова идти на адрес. Много лишних переходов.</p>
+          </div>
+          <div class="block">
+            <div class="block-title">Предлагаемые решения</div>
+            <ul>
+              <li><span class="tag tag--fix">State</span> Сохранять <strong>активный адрес / МХ</strong> в state машины перемещения до завершения операции или явного «Сменить адрес».</li>
+              
+              
+            </ul>
+          </div>
+<div class="img-placeholder" style="background: url(./photo/momx.gif);background-size: cover;">
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="issue page-break" id="p4">
+        <div class="issue-head">
+          <span class="issue-num">4</span>
+          <h3>Клавиатура Google при сканировании ШК</h3>
+        </div>
+        <div class="issue-body">
+          <div class="block">
+            <div class="block-title">Проблема</div>
+            <p>При сканировании ГЕ, адресов и др. всплывает клавиатура Google. Часто после ошибки (например, в «Остаток товара» отсканировали ГЕ вместо товара или ничего не отсканировали) клавиатура появляется <strong>на каждом</strong> следующем скане. Вероятная причина — поле <code>input</code> с фокусом и типом, провоцирующим IME на Android.</p>
+          </div>
+          <div class="block">
+            <div class="block-title">Предлагаемые решения</div>
+            <ul>
+              <li><span class="tag tag--fix">Код</span> Поле по умолчанию <strong>без фокуса</strong>; <code>inputmode="none"</code>, <code>readonly</code> до явного режима ручного ввода; скрытый буфер для сканера; <code>showSoftInputOnFocus=false</code> (Android).</li>
+              <li><span class="tag tag--fix">Сброс</span> После ошибочного скана — принудительно <code>InputMethodManager.hideSoftInputFromWindow</code>.</li>
+              <li><span class="tag tag--idea">Обход-Костыль</span> Приложение <em>No Keyboard: Hideable keyboard</em> или отключение Gboard в настройках ТСД.</li>
+            </ul>
+            <div class="variants">
+              <strong>Варианты (приоритет):</strong>
+              <ul>
+                <li><strong>1 (лучший):</strong> Исправление в AWM — не показывать IME при скане.</li>
+                <li><strong>2:</strong> Enterprise policy / настройки ТСД.</li>
+                <li><strong>3:</strong> Стороннее приложение-заглушка клавиатуры.</li>
+              </ul>
+            </div>
+          </div>
+<div class="img-placeholder" style="    background: url(./photo/Gboard.png);background-size: cover;width: 220px;margin-left: 30%;">
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="issue" id="p5">
+        <div class="issue-head">
+          <span class="issue-num">5</span>
+          <h3>Приёмка: нет признака, что товар уже принят на ГЕ</h3>
+        </div>
+        <div class="issue-body">
+          <div class="block">
+            <div class="block-title">Проблема</div>
+            <p>При сканирования и сохранения товара в ГЕ, снова попадаем в «Приёмку» этого же ГЕ без визуальных маркеров. 
+Частая ошибка повторная приёмка того же товара на ту же ГЕ или нажатие <strong>«ГЕ ПРИНЯТА»</strong> без фактической приёмки 0.</p>
+          </div>
+          <div class="block">
+            <div class="block-title">Предлагаемое решение (лёгкое)</div>
+            <ul>
+              <li><span class="tag tag--fix">UX</span> Кнопка <strong>«ГЕ ПРИНЯТА»</strong> по умолчанию <strong>серая</strong> (доступна, в т.ч. для пустой ГЕ).</li>
+              <li>После фактического сохранения товара на ГЕ — кнопка становится <strong>зелёной</strong> → кладовщик видит подтверждение и осознанно закрывает ГЕ.</li>
+              <li>Дополнительно: колличеств сохраненных товаров в данное ГЕ.</li>
+            </ul>
+          </div>
+<div class="img-placeholder" style="background: url(./photo/priemka.png);background-size: cover;">
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 — Мульти-операции -->
+      <article class="issue page-break" id="p6">
+        <div class="issue-head">
+          <span class="issue-num">6</span>
+          <h3>Мульти-операции с ГЕ: закрытие · привязка к месту · привязка товара</h3>
+        </div>
+        <div class="issue-body">
+          <div class="block">
+            <div class="block-title">Общая идея</div>
+            <p>Три похожие проблемы — кладовщик повторяет одно действие <strong>десятки раз</strong>. Решение: режим <strong>«Мульти»</strong> — диапазон ГЕ (от / до), превью, одна кнопка. <a href="multi-report.html" style="color:#33691e;font-weight:700">Подробнее и макеты →</a></p>
+          </div>
+          <div class="block">
+            <div class="block-title">6A · Закрытие пустых ГЕ</div>
+            <p>30 паллет принято, ~50 лишних пустых ГЕ. <strong>Решение:</strong> диапазон №37431…№37480 или чекбоксы → «Закрыть выбранные» (только пустые).</p>
+          </div>
+          <div class="block">
+            <div class="block-title">6B · Привязка к 0-0-1 (Разгрузка)</div>
+            <p>~70 ГЕ по одной. <strong>Решение:</strong> №37400…№37470 → привязка к 0-0-1, превью списка, импорт из задания.</p>
+          </div>
+          <div class="block">
+            <div class="block-title">6C · Товар на множество ГЕ</div>
+            <p>Если на каждую ГЕ вручную привязать по 10 стульев, уйдёт ~23 минуты. В мульти-режиме: выбираете один товар, сколько штук на ГЕ и номера ГЕ от и до — система делает всё за раз.  </p>
+          </div>
+          <div class="mockup-gallery">
+            <figure class="mockup-item"><img src="./photo/multi-close.png" alt="6A"><figcaption>6A · Закрыть пустые ГЕ</figcaption></figure>
+            <figure class="mockup-item"><img src="./photo/multi-bind-place.png" alt="6B"><figcaption>6B · 71 ГЕ → 0-0-1</figcaption></figure>
+            <figure class="mockup-item"><img src="./photo/multi-bind-product.png" alt="6C"><figcaption>6C · 700 стульев / 70 ГЕ</figcaption></figure>
+          </div>
+        </div>
+      </article>
+
+      <footer class="footer-doc">
+        AWM · WMS · Документ сформирован для внутреннего использования · Места под изображения оставлены для дополнения
+      </footer>
+    </div>
+  </div>
+
+
+</body></html>
